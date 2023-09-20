@@ -97,7 +97,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   sku                 = "Standard_F2"
   instances           = 2
   admin_username      = "adminuser"
-  source_image_id     = "/subscriptions/c2112c6b-5069-40de-b1b6-f5fa7fd21866/resourceGroups/ami-group/providers/Microsoft.Compute/images/test-image-20230912153822"
+  source_image_id     = var.ami
 
   admin_ssh_key {
     username   = "adminuser"
@@ -148,11 +148,11 @@ resource "azurerm_cdn_endpoint" "example" {
 }
 
 resource "azurerm_cdn_endpoint_custom_domain" "example" {
-  name                = "wp-custom-domain"
-  host_name           = "rjwp.azure.vsystems.online"
+  name            = "wp-custom-domain"
+  host_name       = "rjwp.azure.vsystems.online"
   cdn_endpoint_id = azurerm_cdn_endpoint.example.id
   cdn_managed_https {
-      certificate_type = "Dedicated"
-      protocol_type = "ServerNameIndication"
+    certificate_type = "Dedicated"
+    protocol_type    = "ServerNameIndication"
   }
 }
