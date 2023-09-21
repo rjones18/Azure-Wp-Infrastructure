@@ -14,7 +14,7 @@ env:
 jobs:
   terraform_security_and_deploy:
     name: Terraform Security and Deploy
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -28,7 +28,7 @@ jobs:
             6.0.x
         
       - name: Run Microsoft Security DevOps
-        uses: microsoft/security-devops-action@v1.6.0
+        uses: microsoft/security-devops-action@preview
         id: msdo
         
       - name: Upload results to Security tab
